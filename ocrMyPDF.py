@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
     while True:
         try:
-            raw = input("📂 拖入 PDF 文件路径（输入 q 回车退出）：\n>> ").strip()
+            raw = input("📂 拖入 PDF 文件路径（输入 Q 回车退出）：\n>> ").strip()
             if raw.lower() == "q":
                 print("👋 已退出 OCR 工具。")
                 break
