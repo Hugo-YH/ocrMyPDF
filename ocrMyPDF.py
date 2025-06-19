@@ -28,19 +28,28 @@ def ocr_pdf(input_path: Path):
     else:
         print(f"❌ 处理失败：{input_path.name}")
 
+def process_path(path: Path):
+    if path.is_file() and path.suffix.lower() == ".pdf":
+        ocr_pdf(path)
+    elif path.is_dir():
+        for pdf_file in path.rglob("*.pdf"):
+            ocr_pdf(pdf_file)
+    else:
+        print(f"⚠️ 无效路径：{path}")
+
 if __name__ == "__main__":
     print("📥 PDF OCR 工具已启动，可反复拖拽 PDF 路径到终端中使用")
     print("👉 拖入 PDF 后按回车，输入 q 回车可退出\n")
 
     while True:
         try:
-            raw = input("📂 拖入 PDF 文件路径（输入 Q 回车退出）：\n>> ").strip()
+            raw = input("📂 拖入 PDF 文件路径（输入 q 回车退出）：\n>> ").strip()
             if raw.lower() == "q":
                 print("👋 已退出 OCR 工具。")
                 break
             inputs = shlex.split(raw)
             for path in inputs:
-                ocr_pdf(Path(path.strip('"')))
+                process_path(Path(path.strip('"')))
         except KeyboardInterrupt:
             print("\n👋 已手动中止程序。")
             break
