@@ -18,6 +18,8 @@ def ocr_pdf(input_path: Path):
         "--image-dpi", "300",
         "--tesseract-oem", "1",
         "--deskew",
+        "--output-type", "pdfa-2",   # 修改PDF类型，pdf或pdfa-2
+
         str(input_path),
         str(temp_path)
     ])

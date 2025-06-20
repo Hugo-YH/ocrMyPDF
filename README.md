@@ -17,12 +17,17 @@
   - [`ocrmypdf`](https://pypi.org/project/ocrmypdf/)
   - `tesseract`（推荐通过 brew 安装并配置语言包）
 
-## 📦 安装依赖
+## 📦 安装依赖或使用run.sh
 
+### 安装依赖
 ```bash
 pip install --upgrade ocrmypdf
 brew install tesseract
 brew install ocrmypdf
+
+### 使用run.sh
+```bash
+chmod +x ~/run_ocr.sh
 
 # 安装中文语言包
 brew install tesseract-lang
